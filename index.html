@@ -1,0 +1,181 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>חופשת סקי משפחת רוזנר · Hotel Fortini</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#f3f6fb;--card:#fff;--ink:#14213d;--mut:#5b6b86;--pri:#1d4ed8;--acc:#0ea5e9;--blue:#2563eb;--red:#dc2626;--blk:#111}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+header{background:linear-gradient(135deg,#0b3d91,#1d4ed8 55%,#0ea5e9);color:#fff;padding:28px 18px 70px}
+header h1{margin:0;font-size:clamp(1.5rem,4vw,2.3rem)}header p{margin:6px 0 0;opacity:.9}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.chip{background:rgba(255,255,255,.18);padding:5px 12px;border-radius:99px;font-size:.9rem}
+nav{position:sticky;top:0;z-index:1000;display:flex;gap:6px;overflow-x:auto;padding:10px;margin:-50px 12px 0;background:#fff;border-radius:14px;box-shadow:0 6px 24px #0b3d9122}
+nav button{flex:0 0 auto;border:0;background:#eef2ff;color:var(--pri);padding:9px 14px;border-radius:10px;font-weight:600;cursor:pointer;font-size:.95rem}
+nav button.on{background:var(--pri);color:#fff}
+main{max-width:1150px;margin:auto;padding:18px 12px 60px}section{display:none}section.on{display:block}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:var(--card);border-radius:14px;padding:16px;box-shadow:0 2px 10px #14213d12}
+.card h3{margin:0 0 8px}.k{font-size:1.7rem;font-weight:800;color:var(--pri)}.mut{color:var(--mut);font-size:.9rem}
+h2{margin:8px 0 14px}#map{height:430px;border-radius:14px}
+table{width:100%;border-collapse:collapse}td,th{padding:7px;border-bottom:1px solid #e5e9f2;text-align:right;font-size:.93rem}
+.dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-inline-end:6px;vertical-align:middle}
+details{background:#fff;border-radius:12px;margin:8px 0;box-shadow:0 2px 8px #14213d10}summary{padding:13px 15px;cursor:pointer;font-weight:700}details>div{padding:0 15px 14px}
+.flt{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}.flt button{border:1px solid #c7d2fe;background:#fff;border-radius:99px;padding:6px 13px;cursor:pointer}.flt button.on{background:var(--pri);color:#fff;border-color:var(--pri)}
+.tag{display:inline-block;font-size:.78rem;background:#e0f2fe;color:#075985;padding:2px 8px;border-radius:99px;margin-inline-end:4px}
+blockquote{margin:0;font-style:italic;direction:ltr;text-align:left}.q{border-inline-start:4px solid var(--acc)}.q.con{border-color:#f59e0b}
+.pm img{width:100%;border-radius:12px;cursor:zoom-in}#lb{display:none;position:fixed;inset:0;background:#000d;z-index:3000;overflow:auto;cursor:zoom-out}#lb img{width:2400px;max-width:none}
+a{color:var(--pri)}.src{font-size:.8rem;color:var(--mut)}.warn{background:#fff7ed;border:1px solid #fed7aa}
+ul.chk{list-style:none;padding:0}ul.chk li{padding:4px 0}ul.chk input{margin-inline-end:8px;transform:scale(1.2)}
+footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
+</style></head><body>
+<header><h1>🏔️ חופשת סקי · משפחת רוזנר</h1><p>Hotel Fortini · Campo Carlo Magno · Madonna di Campiglio, איטליה</p>
+<div class="chips"><span class="chip">📅 א׳ 7.2 – ו׳ 12.2.2027 · 5 לילות</span><span class="chip">👨‍👩‍👧‍👦 6 נפשות</span><span class="chip">🎿 40 מ׳ מהמעלית</span><span class="chip">⏳ <span id="cd"></span></span></div></header>
+<nav id="tabs"></nav><main>
+
+<section id="ov" data-t="סקירה">
+<div class="grid">
+<div class="card"><h3>🏨 המלון</h3><b>Hotel Fortini</b><br>Via Cima Tosa 25, Campo Carlo Magno<br>ציון Booking: <b>8.7</b> (972 ביקורות) · מיקום <b>9.1</b><br><a href="https://www.booking.com/hotel/it/fortini.html" target="_blank">דף המלון ב-Booking</a></div>
+<div class="card"><h3>🧾 ההזמנה</h3>חדר לארבעה + חדר זוגי/טווין · ארוחת בוקר כלולה<br>סה״כ <b>€3,784.14</b> (כולל ~€50 מס עיר שמשולם במלון)<br><span class="mut">ביטול חינם עד ~2.2.2027</span></div>
+<div class="card"><h3>🚡 מעליות קרובות (לפי Booking)</h3><table><tr><td>Fortini Express</td><td><b>40 מ׳</b></td></tr><tr><td>Grostè 1 Express (גונדולה)</td><td>250 מ׳</td></tr><tr><td>Pradalago Express</td><td>1.4 ק״מ</td></tr></table></div>
+<div class="card"><h3>👨‍👩‍👧‍👦 המשפחה</h3>אילון ושרון, יהלי (21), מאיה (18), עמרי (15), בר (11)<br>כולם ברמה בינונית (כחול/אדום)<br>🏂 בר רוצה ללמוד סנובורד</div>
+</div>
+<h2 style="margin-top:22px">🗺️ מפה</h2><div id="map"></div>
+<p class="src">⚠️ המיקומים על המפה משוערים (לפי מיקום כללי, לא כתובות מדויקות), למעט האזור הכללי של המלון. מפה: © OpenStreetMap.</p>
+</section>
+
+<section id="ski" data-t="אזור הסקי">
+<div class="grid">
+<div class="card"><div class="k">155–156 ק״מ</div>מסלולים מחוברים<div class="src">ski.it / campigliodolomiti.it</div></div>
+<div class="card"><div class="k">58–59</div>מעליות · 104–108 מסלולים · 4 סנופארקים</div>
+<div class="card"><div class="k">852–2,504 מ׳</div>טווח גובה (הפרש 1,652 מ׳)<div class="src">skiresort.info</div></div>
+<div class="card"><div class="k">95%</div>מהמסלולים עם שלג מלאכותי<div class="src">campigliodolomiti.it</div></div>
+</div>
+<div class="grid" style="margin-top:14px">
+<div class="card"><h3>חלוקה לפי צבע</h3><canvas id="pie" height="200"></canvas><div class="src">skiresort.info: כחול 50 ק״מ (32%), אדום 72 ק״מ (47%), שחור 33 ק״מ (21%)</div></div>
+<div class="card"><h3>3 אזורים, סקיפס אחד</h3>Madonna di Campiglio מחוברת בסקי ל-<b>Pinzolo</b> (ואל רנדנה) ול-<b>Folgarida-Marilleva</b> (ואל די סולה). הסקיפס של Skiarea כולל גם את Pejo (לא מחובר בסקי).<p class="mut">חסרונות לפי skiresort.info: חלק מהחניות בתשלום, אין מסלולי עמק ל-Pinzolo, Daolasa ו-Marilleva 900.</p><div class="src"><a href="https://www.skiresort.com/en/ski-resort/madonna-di-campiglio-pinzolo-folgarida-marilleva/test-result/summary/" target="_blank">skiresort summary</a></div></div>
+</div>
+<h2 style="margin-top:20px">🗺️ מפת המסלולים</h2>
+<div class="card pm"><img src="assets/piste-map.jpg" alt="מפת מסלולים" onclick="lb()"><div class="src">לחצו להגדלה. מקור: <a href="https://www.skiresort.com/en/ski-resort/madonna-di-campiglio-pinzolo-folgarida-marilleva/trail-map/" target="_blank">skiresort.info trail map</a> · מפה חיה: <a href="https://www.ski.it/en/info-live/slopes" target="_blank">ski.it</a></div></div>
+<h2>⛷️ מסלולים מומלצים למשפחה (כחול/אדום)</h2>
+<p class="mut">הנתונים (אורך/הפרש גובה) מתוך רשימת המסלולים הרשמית ב-<a href="https://www.ski.it/en/info-live/slopes" target="_blank">ski.it</a>. הבחירה היא המלצה שלי לפי צבע ומיקום; כדאי לאמת על המפה.</p>
+<div class="card"><table><tr><th>מסלול</th><th>צבע</th><th>אורך</th><th>הפרש</th><th>הערה</th></tr>
+<tr><td>Malga Zeledria – Fortini</td><td><span class="dot" style="background:var(--blue)"></span>כחול</td><td>1,360 מ׳</td><td>147 מ׳</td><td>מסתיים ליד המלון – חימום מושלם</td></tr>
+<tr><td>Pradalago easy</td><td><span class="dot" style="background:var(--blue)"></span>כחול</td><td>3,740 מ׳</td><td>460 מ׳</td><td>ארוך ונוף לברנטה (skiresort ממליץ)</td></tr>
+<tr><td>Zeledria</td><td><span class="dot" style="background:var(--blue)"></span>כחול</td><td>1,310 מ׳</td><td>165 מ׳</td><td>אזור Campo Carlo Magno</td></tr>
+<tr><td>Skiweg Campiglio</td><td><span class="dot" style="background:var(--blue)"></span>כחול</td><td>2,200 מ׳</td><td>240 מ׳</td><td>חיבור לכפר</td></tr>
+<tr><td>Belvedere</td><td><span class="dot" style="background:var(--blue)"></span>כחול</td><td>1,160 מ׳</td><td>195 מ׳</td><td></td></tr>
+<tr><td>Nube d'argento</td><td><span class="dot" style="background:var(--blue)"></span>כחול</td><td>1,280 מ׳</td><td>200 מ׳</td><td></td></tr>
+<tr><td>Genziana</td><td><span class="dot" style="background:var(--red)"></span>אדום</td><td>1,780 מ׳</td><td>360 מ׳</td><td></td></tr>
+<tr><td>Fiocco di neve</td><td><span class="dot" style="background:var(--red)"></span>אדום</td><td>1,480 מ׳</td><td>230 מ׳</td><td></td></tr>
+<tr><td>Rododendro (Pinzolo)</td><td><span class="dot" style="background:var(--red)"></span>אדום</td><td>3,100 מ׳</td><td>600 מ׳</td><td>יום טיול לפינצולו</td></tr>
+</table><p class="mut">🖤 לא למשפחה ברמה בינונית: 3-Tre / Canalone Miramonti (מסלול גביע העולם), Spinale direttissima (שחור, 2,400 מ׳), Amazzonia (שחור).</p></div>
+<h2>🎟️ מחירי סקיפס 2026/27 (Skiarea, מחירון רשמי)</h2>
+<div class="card warn">התאריכים 7–12.2 נופלים כנראה על <b>מעבר עונות</b>: לפי המחירון, 7.1–6.2.2027 הוא "עונה נמוכה", ואחרי 6.2 מתחילה עונה גבוהה יותר. לא הצלחתי לקרוא בוודאות את גבולות העונה הגבוהה בפברואר – בדקו במחירון.</div>
+<div class="card" style="margin-top:10px"><table><tr><th>תעריף</th><th>מבוגר</th><th>ג׳וניור</th><th>ילד</th></tr>
+<tr><td>יום 1 · נמוכה</td><td>€75</td><td>€53</td><td>€38</td></tr>
+<tr><td>יום 1 · גבוהה</td><td>€87</td><td>€61</td><td>€44</td></tr>
+<tr><td>5 ימים · נמוכה</td><td>€331</td><td>€232</td><td>€166</td></tr>
+<tr><td>5 ימים · גבוהה</td><td>€383</td><td>€268</td><td>€192</td></tr></table>
+<p class="mut">גבולות הגיל לג׳וניור/ילד והנחות משפחתיות: לא אימתתי – מופיעים במחירון. המחיר הזול ביותר לרוב באונליין.</p>
+<div class="src"><a href="https://www.ski.it/ski/documenti-file/skipass/listini/2026-2027ListinoSkiareaIT.pdf" target="_blank">מחירון 2026/27 (PDF, ski.it)</a></div></div>
+<h2>🏂 סנופארק בשביל בר</h2>
+<div class="card"><b>Ursus Snowpark – Grostè</b>: לפי האתר הרשמי "the Alps' best terrain park". נמצא בחלק העליון של הגרוסטה, עם מכשולים לכל הרמות (boxes, rails, jumps). למתחילה בסנובורד – עדיף קודם השיעורים בשטח התרגול באמצע הגרוסטה ורק אחר כך הפארק.<div class="src">campigliodolomiti.it · checkyeti (Zebra)</div></div>
+</section>
+
+<section id="sch" data-t="בתי ספר">
+<p class="mut">שני בתי הספר שאימתתי הם בקרבת המלון/הגרוסטה. יש בעיירה עוד בתי ספר – רשימה מלאה באתר התיירות.</p>
+<details open><summary>🏫 Scuola Italiana Sci Campo Carlo Magno (CCM)</summary><div>
+📍 Via Zeledria 8, Campo Carlo Magno · ☎ +39 0465 443222 · <a href="https://www.scuolasciccm.it/en/snowboard/kids-and-adults-lessons" target="_blank">scuolasciccm.it</a><br>
+• כ-60 מדריכים, קורסים קבוצתיים ופרטיים לכל הרמות.<br>
+• <b>סנובורד מתחילים לילדים:</b> 11:00–12:50, עד 6 תלמידים, מינימום 3 ימים, <b>מתחיל בראשון או שני</b> – מתאים בדיוק להגעה ב-7.2!<br>
+• קבוצות סנובורד לגילאי 8+ · מציעים גם השכרה (CCM Rent).<br>• מחיר: לא מצאתי מחיר מפורסם – לשאול.
+<div class="src"><a href="https://www.campigliodolomiti.it/en/services/scuola-di-sci-campo-carlo-magno" target="_blank">campigliodolomiti.it</a></div></div></details>
+<details><summary>🦓 Scuola di Snowboard Zebra</summary><div>
+• קבוצות סנובורד לילדים מגיל 8 ומבוגרים, ראשון/שני, 11:00, 3–6 ימים.<br>• מפגש: Rifugio Boch בתחנת האמצע של הגרוסטה; מתחילים לומדים בשטח מסודר שם ואז מסלולים כחולים.<br>• <b>מחיר: €170–€270 לאדם</b> (לפי checkyeti, עונת 2026/27).<br>• השכרה ב-Zebra Shop. צריך סקיפס מהיום הראשון.
+<div class="src"><a href="https://www.checkyeti.com/en/d/2973/23389" target="_blank">checkyeti</a></div></div></details>
+<details><summary>💡 המלצה לבר</summary><div>קורס קבוצתי 3–5 ימים שמתחיל ביום ראשון 8.2? (ההגעה ביום ראשון 7.2 – לבדוק אם אפשר להתחיל ביום שני 8.2.) שיעור פרטי ביום הראשון יכול לזרז. המשפחה גולשת בבוקר באזור הגרוסטה ונפגשת לצהריים ב-Boch.</div></details>
+</section>
+
+<section id="food" data-t="מסעדות">
+<div class="flt" id="ff"><button class="on" data-f="all">הכל</button><button data-f="slope">על המסלול</button><button data-f="town">בעיירה</button><button data-f="fine">גורמה</button><button data-f="casual">קז׳ואל</button></div>
+<div class="grid" id="fl"></div>
+<p class="src">מקורות: <a href="https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti" target="_blank">Scatti di Gusto (2023, עודכן 2024)</a> · <a href="https://graffer.com/Ristorante" target="_blank">graffer.com</a> · <a href="https://www.stoppanidolomiteslodge.it/ristorante-madonna-di-campiglio" target="_blank">Stoppani</a> · <a href="https://www.campigliodolomiti.it/it/servizi/boch" target="_blank">campigliodolomiti.it</a>. מחירים מ-2023 – כנראה עלו.</p>
+</section>
+
+<section id="rev" data-t="ביקורות">
+<div class="grid">
+<div class="card"><div class="k">8.7</div>Booking · 972 ביקורות<br>מיקום 9.1</div>
+<div class="card"><div class="k">4.7/5</div>אזור הסקי · skiresort.info ("World-class")</div>
+<div class="card"><div class="k">8.6/10</div>skiweather.eu · משפחות 8.4</div>
+</div>
+<h3>על Fortini (Booking)</h3><div class="grid">
+<div class="card q"><blockquote>"Fantastic location ski in ski out, staff very helpful… Easy access to lifts"</blockquote><div class="mut">Lynda · אוסטרליה · מרץ 2026</div></div>
+<div class="card q"><blockquote>"The position of the Hotel is perfect, ski to door Hotel. Second year at this Hotel"</blockquote><div class="mut">Goran · גרמניה</div></div>
+<div class="card q"><blockquote>"Great location next to the ski lift. Modern and comfortable rooms"</blockquote><div class="mut">Malcolm · איטליה</div></div>
+<div class="card q"><blockquote>"Great location next to the telecabine, amazing breakfast"</blockquote><div class="mut">Kevin · בריטניה · ספט׳ 2026</div></div>
+<div class="card q con"><blockquote>"A bit noisy in the evening if your room is above the bar"</blockquote><div class="mut">Kevin · בריטניה · חיסרון</div></div>
+<div class="card q con"><blockquote>"right by a ski lift and main road"</blockquote><div class="mut">Berkshireboy · בריטניה</div></div>
+</div>
+<h3>על אזור הסקי</h3><div class="card">skiresort.info – יתרונות: אזור הסקי הגדול בטרנטינו, טיפוח מסלולים מושלם, מגוון, נופי ברנטה, סנופארק מהשורה הראשונה, צוות ידידותי. חסרונות: חניה בתשלום בחלק מהמקומות, אין מסלולי עמק לחלק מהכפרים.<div class="src"><a href="https://www.skiresort.com/en/ski-resort/madonna-di-campiglio-pinzolo-folgarida-marilleva/test-result/summary/" target="_blank">skiresort</a> · <a href="https://skiweather.eu/profile/madonna-di-campiglio/704" target="_blank">skiweather.eu</a> · TripAdvisor: לא בדקתי</div></div>
+</section>
+
+<section id="wx" data-t="מזג אוויר">
+<div class="grid">
+<div class="card"><div class="k">~1°C</div>ממוצע מקסימום בפברואר (בעיירה)</div>
+<div class="card"><div class="k">-7.5 עד -10°C</div>ממוצע מינימום בלילה</div>
+<div class="card"><div class="k">13–15</div>ימי שלג בפברואר</div>
+<div class="card"><div class="k">~185 שעות</div>שמש בחודש (weatherapi)</div>
+</div>
+<div class="card" style="margin-top:14px"><h3>השוואת מקורות – פברואר, אזור העיירה (~1,520 מ׳)</h3><canvas id="wxc" height="120"></canvas></div>
+<div class="card warn" style="margin-top:12px">❓ <b>לא מצאתי:</b> נתוני אקלים אמינים לפסגות (~2,500 מ׳) ועומק שלג טיפוסי בפברואר. כלל אצבע (לא נתון מקומי): טמפ׳ יורדת בכ-0.6°C לכל 100 מ׳, כך שבגרוסטה צפוי קר בכמה מעלות מהעיירה. מצב שלג חי: <a href="https://www.ski.it/en/info-live/slopes" target="_blank">ski.it</a>. כמויות השלג שונות מאוד בין המקורות (54 ס״מ לעומת 335 מ״מ שלג מצטבר).</div>
+<p class="src"><a href="https://www.weatherapi.com/history/february/q/madonna-di-campiglio-1279634" target="_blank">weatherapi</a> · <a href="https://www.weather-atlas.com/en/italy/madonna-di-campiglio-weather-february" target="_blank">weather-atlas</a> · <a href="https://www.easeweather.com/europe/italy/trentino-alto-adige/provincia-autonoma-di-trento/madonna-di-campiglio/february" target="_blank">easeweather</a> · <a href="https://weather-and-climate.com/madonna-di-campiglio-February-averages" target="_blank">weather-and-climate</a> (נתונים מטרנטו!)</p>
+</section>
+
+<section id="pr" data-t="מעשי">
+<div class="grid">
+<div class="card"><h3>✈️ טיסה ונסיעה</h3><b>ורונה</b> – הכי נוח, כ-2.5 שעות: A22 צפונה לכיוון טרנטו, ומשם דרך ואל רנדנה/פינצולו למדונה די קמפיליו ועד Campo Carlo Magno (כ-2 ק״מ מעל העיירה).<br>חלופות: ברגמו (~2.5–3 ש׳), מילאנו/ונציה (~3–3.5 ש׳), אינסברוק (~3 ש׳ דרך הברנר).<p class="mut">זמנים משוערים. בחורף – חובה צמיגי חורף/שרשראות ברכב; לבדוק עם חברת ההשכרה.</p><a href="https://www.google.com/maps/dir/Verona+Airport/Hotel+Fortini+Madonna+di+Campiglio" target="_blank">מסלול בגוגל מפות</a></div>
+<div class="card"><h3>🅿️ במלון</h3>• חניה €10 ליום<br>• אחסון סקי במקום<br>• השכרת ציוד ובית ספר לסקי בסמוך<br>• ~2 ק״מ למרכז (2 דק׳ ברכב / 10–20 דק׳ הליכה), יש שאטל<div class="src">Booking</div></div>
+<div class="card"><h3>📞 חשוב</h3>• חירום: 112<br>• מצב מעליות: <a href="https://www.ski.it/en/info-live/lift-status" target="_blank">ski.it</a><br>• ביטול חינם עד ~2.2.2027<br>• לרשום שם אורח בחדר לארבעה</div>
+</div>
+<h3>✅ צ׳קליסט (נשמר בדפדפן)</h3><div class="card"><ul class="chk" id="chk"></ul></div>
+</section>
+</main>
+<div id="lb" onclick="this.style.display='none'"><img src="assets/piste-map.jpg" alt=""></div>
+<footer>נבנה ע״י Grok Bot · 13.10.2026 · כל הנתונים עם קישור למקור; מה שלא אומת מסומן</footer>
+<script>
+const secs=[...document.querySelectorAll('section')],nav=document.getElementById('tabs');
+secs.forEach((s,i)=>{const b=document.createElement('button');b.textContent=s.dataset.t;b.onclick=()=>show(i);nav.appendChild(b)});
+function show(i){secs.forEach((s,j)=>s.classList.toggle('on',i==j));[...nav.children].forEach((b,j)=>b.classList.toggle('on',i==j));if(i==0&&window.M)setTimeout(()=>M.invalidateSize(),50);history.replaceState(null,'','#'+secs[i].id)}
+let h=secs.findIndex(s=>'#'+s.id==location.hash);show(h<0?0:h);
+const d=Math.ceil((new Date('2027-02-07')-new Date())/864e5);document.getElementById('cd').textContent=d>0?`עוד ${d} ימים`:'בחופשה!';
+function lb(){document.getElementById('lb').style.display='block'}
+// map (approximate coords)
+window.M=L.map('map').setView([46.240,10.845],13);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap'}).addTo(M);
+const P=[["🏨 Hotel Fortini","Via Cima Tosa 25, Campo Carlo Magno",46.2455,10.8395,'#dc2626'],
+["🚡 Fortini Express","40 מ׳ מהמלון",46.2458,10.8402,'#2563eb'],["🚡 Grostè (תחנה תחתונה)","~250 מ׳",46.2468,10.8425,'#2563eb'],["🚡 Pradalago","~1.4 ק״מ",46.2335,10.8270,'#2563eb'],
+["🏫 Scuola Sci CCM","Via Zeledria 8",46.2450,10.8380,'#16a34a'],["🍽️ Rifugio Boch","תחנת אמצע גרוסטה, 2,085 מ׳ · מפגש Zebra",46.2470,10.8610,'#f59e0b'],
+["🍽️ Rifugio Graffer","2,260 מ׳",46.2440,10.8720,'#f59e0b'],["🍽️ Rifugio Stoppani","Passo Grostè ~2,500 מ׳",46.2380,10.8880,'#f59e0b'],["🍽️ Chalet Fiat","Monte Spinale",46.2330,10.8530,'#f59e0b'],
+["🏘️ מרכז העיירה","Madonna di Campiglio",46.2297,10.8268,'#7c3aed']];
+P.forEach(p=>L.circleMarker([p[2],p[3]],{radius:9,color:p[4],fillOpacity:.85}).addTo(M).bindPopup(`<b>${p[0]}</b><br>${p[1]}<br><i>מיקום משוער</i>`));
+// restaurants
+const R=[["Rifugio Graffer","slope","casual","2,260 מ׳ ליד הגרוסטה. מטבח טרנטינו ביתי: קנדרלי, סטינקו ופולנטה, שטרודל. מרפסת פנורמית.","€€","https://graffer.com/Ristorante"],
+["Rifugio Stoppani","slope","fine","Passo Grostè ~2,500 מ׳. בר, סלף-סרוויס, פיצה ומסעדת גורמה. ממוצע €10–35. גם ארוחות ערב (סנואוקט).","€€–€€€","https://www.stoppanidolomiteslodge.it/ristorante-madonna-di-campiglio"],
+["Rifugio Boch","slope","casual","תחנת אמצע גרוסטה, 2,085 מ׳. אווירה צעירה, מרפסת עם DJ. נקודת מפגש מושלמת עם בר אחרי השיעור.","€€","https://www.campigliodolomiti.it/it/servizi/boch"],
+["Chalet Fiat","slope","casual","מונטה ספינאלה. סלף-סרוויס + מסעדה 12–15. ממוצע ~€40.","€€€","https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti"],
+["Rifugio Doss del Sabion","slope","casual","באזור פינצולו. נוף לברנטה ולאדמלו. ממוצע ~€30. ליום טיול.","€€","https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti"],
+["Cascina Zeledria","slope","casual","מסעדה על המסלולים של משפחת Artini, אזור Zeledria – קרוב למלון. פרטים נוספים לא אומתו.","?","https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti"],
+["Il Gallo Cedrone","town","fine","כוכב מישלן, Hotel Bertelli, Via Cima Tosa 80. תפריטי טעימות €109/€139 (2023). סגור בשני.","€€€€","https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti"],
+["Stube Hermitage","town","fine","כוכב מישלן (לפי המקור, 2023), Biohotel Hermitage. טעימות €90–180.","€€€€","https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti"],
+["Ristorante Artini","town","casual","מול גונדולת Pradalago. מטבח טרנטינו ובשר על הגריל, עיקריות €15–30. מומלץ להזמין.","€€","https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti"],
+["The Hungry Wolf","town","casual","פאב-מסעדה למרגלות המסלולים, פיצות, המבורגרים, בירות. ~€35–40. טוב לנוער.","€€","https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti"],
+["Home Stube","town","casual","מבשלת בירה במרכז, המבורגרים ומנות טרנטינו, עיקריות €15–30.","€€","https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti"]];
+const fl=document.getElementById('fl');function rf(f){fl.innerHTML=R.filter(r=>f=='all'||r[1]==f||r[2]==f).map(r=>`<div class="card"><h3>${r[0]}</h3><span class="tag">${r[1]=='slope'?'⛷️ על המסלול':'🏘️ בעיירה'}</span><span class="tag">${r[2]=='fine'?'גורמה':'קז׳ואל'}</span><span class="tag">${r[4]}</span><p>${r[3]}</p><a href="${r[5]}" target="_blank">מקור</a></div>`).join('')}rf('all');
+document.querySelectorAll('#ff button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#ff button').forEach(x=>x.classList.remove('on'));b.classList.add('on');rf(b.dataset.f)});
+// checklist
+const C=["דרכונים + ביטוח נסיעות שכולל סקי","השכרת רכב עם צמיגי חורף/שרשראות","הזמנת קורס סנובורד לבר","קניית סקיפס אונליין","קסדות לכולם","משקפי סקי + קרם הגנה","שכבות תרמיות, כפפות, צווארונים","לרשום שם אורח בחדר לארבעה ב-Booking","החלטה סופית לפני מועד הביטול (~2.2)","מזומן/כרטיס למס עיר (~€50) וחניה (€10/יום)"];
+const st=JSON.parse(localStorage.getItem('chk')||'{}');document.getElementById('chk').innerHTML=C.map((c,i)=>`<li><label><input type="checkbox" data-i="${i}" ${st[i]?'checked':''}>${c}</label></li>`).join('');
+document.querySelectorAll('#chk input').forEach(x=>x.onchange=()=>{st[x.dataset.i]=x.checked;localStorage.setItem('chk',JSON.stringify(st))});
+// charts
+if(window.Chart){new Chart(pie,{type:'doughnut',data:{labels:['כחול 50','אדום 72','שחור 33'],datasets:[{data:[50,72,33],backgroundColor:['#2563eb','#dc2626','#111']}]}});
+new Chart(wxc,{type:'bar',data:{labels:['weatherapi','weather-atlas','easeweather','weather-and-climate*'],datasets:[{label:'מקס׳ °C',data:[1,0.8,2,1],backgroundColor:'#f59e0b'},{label:'מינ׳ °C',data:[-8,-7.5,-5,-10],backgroundColor:'#0ea5e9'}]},options:{plugins:{tooltip:{rtl:true}}}})}
+</script></body></html>
